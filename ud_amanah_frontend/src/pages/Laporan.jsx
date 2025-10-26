@@ -6,7 +6,7 @@ import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable'
 import * as XLSX from 'xlsx';
 
-const API_URL = 'http://localhost:5027/api/laporan';
+const API_URL = '/api/laporan';
 const PRIMARY_COLOR = 'var(--primary-color)';
 const ACCENT_COLOR = 'var(--accent-color)';
 const DANGER_COLOR = '#dc3545';
