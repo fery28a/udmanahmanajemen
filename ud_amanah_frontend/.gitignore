@@ -1,0 +1,10 @@
+# Dependencies and Builds
+/node_modules
+/ud_amanah_backend/node_modules
+/ud_amanah_frontend/node_modules
+/ud_amanah_frontend/dist
+
+# Environment/Configuration Files
+.env
+.env.local
+npm-debug.log*
