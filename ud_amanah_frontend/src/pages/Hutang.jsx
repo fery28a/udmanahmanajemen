@@ -9,7 +9,7 @@ import HutangPrincipalForm from '../components/hutang/HutangPrincipalForm';
 import HutangSettled from '../components/hutang/HutangSettled'; 
 import HutangActiveList from '../components/hutang/HutangActiveList'; 
 
-const API_URL = 'http://localhost:5027/api/hutang';
+const API_URL = '/api/hutang';
 const MASTER_DATA_API_URL = 'http://localhost:5027/api/masterdata';
 
 const PRIMARY_COLOR = 'var(--primary-color)';
