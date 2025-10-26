@@ -9,7 +9,7 @@ import 'jspdf-autotable';
 const PRIMARY_COLOR = 'var(--primary-color)';
 const ACCENT_COLOR = 'var(--accent-color)';
 // -------------------------------------------------------------
-const API_URL = 'http://localhost:5027/api/hutang';
+const API_URL = '/api/hutang';
 const DANGER_COLOR = '#dc3545'; // Digunakan untuk Hutang
 
 const HutangSettled = ({ formatRupiah }) => {
