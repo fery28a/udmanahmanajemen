@@ -5,7 +5,7 @@ import axios from "axios";
 import { jsPDF } from "jspdf";
 import 'jspdf-autotable';
 
-const API_URL = 'http://localhost:5027/api/piutang';
+const API_URL = '/api/piutang';
 const PRIMARY_COLOR = 'var(--primary-color)';
 const SUCCESS_COLOR = '#28a745';
 const ACCENT_COLOR = 'var(--accent-color)';
