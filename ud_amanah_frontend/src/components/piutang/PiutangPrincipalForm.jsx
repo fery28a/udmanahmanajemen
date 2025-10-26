@@ -6,7 +6,8 @@ const PRIMARY_COLOR = 'var(--primary-color)';
 const SUCCESS_COLOR = '#28a745';
 
 const PiutangPrincipalForm = ({ onSave, customers, initialData, onCancel }) => {
-    const [customerId, setCustomerId] = useState(initialData?.customer_id || customers[0]?._id || '');
+    // FIX: Inisialisasi ke string kosong. Logika pemilihan default dipindahkan ke useEffect.
+    const [customerId, setCustomerId] = useState(initialData?.customer_id || '');
     const [transactionNumber, setTransactionNumber] = useState(initialData?.transaction_number || '');
     const [startDate, setStartDate] = useState(initialData?.start_date ? new Date(initialData.start_date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]);
     const [dueDate, setDueDate] = useState(initialData?.due_date ? new Date(initialData.due_date).toISOString().split('T')[0] : '');
@@ -15,13 +16,17 @@ const PiutangPrincipalForm = ({ onSave, customers, initialData, onCancel }) => {
     
     useEffect(() => {
         if (initialData) {
+            // Logika Edit
             setCustomerId(initialData.customer_id);
             setTransactionNumber(initialData.transaction_number);
             setStartDate(new Date(initialData.start_date).toISOString().split('T')[0]);
             setDueDate(new Date(initialData.due_date).toISOString().split('T')[0]);
             setNominal(initialData.nominal);
+        } else if (customers.length > 0 && customerId === '') {
+            // FIX: Set nilai default (pelanggan pertama) HANYA jika mode BARU dan state masih kosong
+            setCustomerId(customers[0]._id);
         }
-    }, [initialData]);
+    }, [initialData, customers]);
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,6 +34,12 @@ const PiutangPrincipalForm = ({ onSave, customers, initialData, onCancel }) => {
         if (new Date(startDate) > new Date(dueDate)) {
             alert("Tanggal Jatuh Tempo tidak boleh mendahului Tanggal Awal Piutang.");
             return;
+        }
+        
+        // FIX: Tambahkan validasi client-side terakhir sebelum pengiriman
+        if (!customerId) {
+             alert("Harap pilih Customer.");
+             return;
         }
 
         const dataToSave = {
@@ -58,6 +69,8 @@ const PiutangPrincipalForm = ({ onSave, customers, initialData, onCancel }) => {
                     required 
                     style={{ width: '100%', padding: '10px', border: '1px solid #ddd', borderRadius: '4px' }}
                 >
+                    {/* FIX: Tambahkan Opsi Placeholder dengan value="" */}
+                    <option value="" disabled hidden>-- Pilih Customer --</option> 
                     {customers.map(opt => (
                         <option key={opt._id} value={opt._id}>{opt.nama}</option>
                     ))}
