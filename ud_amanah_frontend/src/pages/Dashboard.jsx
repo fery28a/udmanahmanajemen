@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // HAPUS SEMUA IMPORTS CHART.JS
 
-const API_URL = 'http://localhost:5027/api/dashboard';
+const API_URL = '/api/dashboard';
 const PRIMARY_COLOR = 'var(--primary-color)';
 const ACCENT_COLOR = 'var(--accent-color)';
 const DANGER_COLOR = '#dc3545';
